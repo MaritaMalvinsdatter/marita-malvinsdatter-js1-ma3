@@ -8,15 +8,17 @@ const getRemainder = (a, b) => a % b;
 
 const url = "https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-rating&key=a43a545549494a5db923a503d5dec715";
 
-const resultsHTML = document.querySelector(".results");
+const resultsHTML = document.querySelector(".resultscontainer");
 async function getGames() {
 
     try {
         const response = await fetch(url);
-        const results = await response.json();
-        const roundUp = results.results;
+        const data = await response.json();
+        const roundUp = data.results;
 
-        // console.log(roundUp);
+        // console.log(results);
+
+        resultsHTML.innerHTML = " ";
 
         for (let i = 0; i < roundUp.length; i++) {
         // console.log(roundUp[i].name);
@@ -27,7 +29,7 @@ async function getGames() {
             break;
         }
 
-        resultsHTML.innerHTML += `<div class="games"><p>Name: ${roundUp[i].name}</p>
+        resultsHTML.innerHTML += `<div class="result"><p>Name: ${roundUp[i].name}</p>
         <p>Rating: ${roundUp[i].rating}</p>
         <p>Tags: ${roundUp[i].tags.length}</p></div>`
     }
@@ -35,7 +37,6 @@ async function getGames() {
     } catch (error) {
         resultsHTML.innerHTML += `An error has occured`;
     }
-
     
 }
 
