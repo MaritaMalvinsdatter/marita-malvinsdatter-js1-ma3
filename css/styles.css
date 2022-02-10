@@ -1,0 +1,7 @@
+.games {
+  border: solid blue 1px;
+  padding-left: 10px;
+  line-height: 0.4rem;
+  margin: 10px 0px;
+  max-width: 40%;
+}
