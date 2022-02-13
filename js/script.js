@@ -16,8 +16,6 @@ async function getGames() {
         const data = await response.json();
         const roundUp = data.results;
 
-        // console.log(results);
-
         resultsHTML.innerHTML = " ";
 
         for (let i = 0; i < roundUp.length; i++) {
@@ -41,3 +39,6 @@ async function getGames() {
 }
 
 getGames()
+
+
+    
